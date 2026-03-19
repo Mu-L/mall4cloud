@@ -1,9 +1,11 @@
 package com.mall4j.cloud.payment.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
 import com.mall4j.cloud.common.model.BaseModel;
+
 /**
  * 订单支付记录
  *
@@ -11,6 +13,7 @@ import com.mall4j.cloud.common.model.BaseModel;
  * @date 2020-12-25 09:50:59
  */
 public class PayInfo extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
 	public static final String DISTRIBUTED_ID_KEY = "mall4cloud-pay";

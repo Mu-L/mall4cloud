@@ -1,8 +1,10 @@
 package com.mall4j.cloud.biz.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import com.mall4j.cloud.common.model.BaseModel;
+
 /**
  *
  *
@@ -10,6 +12,7 @@ import com.mall4j.cloud.common.model.BaseModel;
  * @date 2020-12-04 16:15:02
  */
 public class AttachFileGroup extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**

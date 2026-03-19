@@ -2,6 +2,7 @@ package com.mall4j.cloud.user.model;
 
 import com.mall4j.cloud.common.model.BaseModel;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -11,6 +12,7 @@ import java.io.Serializable;
  * @date 2020-11-25 15:16:14
  */
 public class Area extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**

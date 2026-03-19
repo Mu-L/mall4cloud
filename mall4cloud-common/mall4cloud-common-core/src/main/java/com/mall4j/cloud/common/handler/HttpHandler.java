@@ -1,7 +1,7 @@
 package com.mall4j.cloud.common.handler;
 
 import cn.hutool.core.util.CharsetUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import com.mall4j.cloud.common.exception.Mall4cloudException;
 import com.mall4j.cloud.common.response.ServerResponseEntity;
 import org.slf4j.Logger;
@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import tools.jackson.core.JacksonException;
 
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -53,7 +54,7 @@ public class HttpHandler {
 			printWriter = response.getWriter();
 			printWriter.write(objectMapper.writeValueAsString(serverResponseEntity));
 		}
-		catch (IOException e) {
+		catch (JacksonException | IOException e) {
 			throw new Mall4cloudException("io 异常", e);
 		}
 	}

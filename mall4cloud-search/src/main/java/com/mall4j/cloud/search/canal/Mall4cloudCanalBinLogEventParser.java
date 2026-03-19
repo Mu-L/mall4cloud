@@ -8,7 +8,7 @@ import cn.throwx.canal.gule.support.parser.BaseCommonEntryFunction;
 import cn.throwx.canal.gule.support.parser.BasePrimaryKeyTupleFunction;
 import cn.throwx.canal.gule.support.parser.CanalBinLogEventParser;
 import cn.throwx.canal.gule.support.parser.DefaultCanalBinLogEventParser;
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

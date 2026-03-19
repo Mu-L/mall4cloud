@@ -1,7 +1,9 @@
 package com.mall4j.cloud.multishop.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import com.mall4j.cloud.common.model.BaseModel;
+
 /**
  * 轮播图
  *
@@ -9,6 +11,7 @@ import com.mall4j.cloud.common.model.BaseModel;
  * @date 2020-11-24 16:38:32
  */
 public class IndexImg extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**

@@ -204,7 +204,7 @@ public class SegmentIDGenImpl implements IDGen {
 						: nextStep;
 			}
 			logger.info("leafKey[{}], step[{}], duration[{}mins], nextStep[{}]", key, buffer.getStep(),
-					String.format("%.2f", ((double) duration / (1000 * 60))), nextStep);
+                    "%.2f".formatted(((double) duration / (1000 * 60))), nextStep);
 			LeafAlloc temp = new LeafAlloc();
 			temp.setKey(key);
 			temp.setStep(nextStep);

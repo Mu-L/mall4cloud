@@ -1,8 +1,10 @@
 package com.mall4j.cloud.multishop.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import com.mall4j.cloud.common.model.BaseModel;
+
 /**
  * 店铺详情
  *
@@ -10,6 +12,7 @@ import com.mall4j.cloud.common.model.BaseModel;
  * @date 2020-12-05 15:50:25
  */
 public class ShopDetail extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**

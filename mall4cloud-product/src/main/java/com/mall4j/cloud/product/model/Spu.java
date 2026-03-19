@@ -1,5 +1,6 @@
 package com.mall4j.cloud.product.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import com.mall4j.cloud.common.model.BaseModel;
@@ -11,6 +12,7 @@ import com.mall4j.cloud.common.model.BaseModel;
  * @date 2020-12-08 15:54:23
  */
 public class Spu extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**

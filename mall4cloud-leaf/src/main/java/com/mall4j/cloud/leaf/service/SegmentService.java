@@ -8,6 +8,7 @@ import com.mall4j.cloud.leaf.segment.dao.IDAllocDao;
 import com.mall4j.cloud.leaf.segment.dao.impl.IDAllocDaoImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.sql.init.dependency.DependsOnDatabaseInitialization;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
@@ -15,6 +16,7 @@ import javax.sql.DataSource;
 /**
  * @author left
  */
+@DependsOnDatabaseInitialization
 @Service("SegmentService")
 public class SegmentService {
 
@@ -43,8 +45,8 @@ public class SegmentService {
 	}
 
 	public SegmentIDGenImpl getIdGen() {
-		if (idGen instanceof SegmentIDGenImpl) {
-			return (SegmentIDGenImpl) idGen;
+		if (idGen instanceof SegmentIDGenImpl impl) {
+			return impl;
 		}
 		return null;
 	}

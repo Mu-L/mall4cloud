@@ -1,8 +1,10 @@
 package com.mall4j.cloud.platform.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import com.mall4j.cloud.common.model.BaseModel;
+
 /**
  * 系统配置信息表
  *
@@ -10,6 +12,7 @@ import com.mall4j.cloud.common.model.BaseModel;
  * @date 2020-12-23 16:27:57
  */
 public class SysConfig extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**

@@ -1,13 +1,15 @@
 package com.mall4j.cloud.common.util;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import tools.jackson.databind.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.cfg.EnumFeature;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -21,19 +23,43 @@ public class Json {
 
 	private static final Logger logger = LoggerFactory.getLogger(Json.class);
 
-	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-
-	static {
-		// 如果为空则不输出
-		OBJECT_MAPPER.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
-		// 对于空的对象转json的时候不抛出错误
-		OBJECT_MAPPER.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
-		// 禁用序列化日期为timestamps
-		OBJECT_MAPPER.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-		// 禁用遇到未知属性抛出异常
-		OBJECT_MAPPER.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+	public static JsonMapper.Builder newBaseBuilder() {
+		return JsonMapper.builder()
+				.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
+				.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+				.disable(SerializationFeature.FAIL_ON_SELF_REFERENCES)
+				.enable(SerializationFeature.WRITE_SELF_REFERENCES_AS_NULL)
+				.disable(EnumFeature.FAIL_ON_NUMBERS_FOR_ENUMS)
+				.changeDefaultVisibility(vc -> vc
+						.withFieldVisibility(JsonAutoDetect.Visibility.ANY)
+						.withGetterVisibility(JsonAutoDetect.Visibility.NONE)
+						.withIsGetterVisibility(JsonAutoDetect.Visibility.NONE)
+						.withSetterVisibility(JsonAutoDetect.Visibility.NONE)
+						.withCreatorVisibility(JsonAutoDetect.Visibility.NONE));
+		// 如果你想尽量贴近 Jackson 2 默认行为，可再补：
+		// .disable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS)
 	}
 
+	/**
+	 * 普通用途：深拷贝、parseObject、mapAsList
+	 */
+	private static final ObjectMapper OBJECT_MAPPER =
+			newBaseBuilder().build();
+
+	/**
+	 * Redis 专用：支持多态
+	 */
+	private static final ObjectMapper REDIS_OBJECT_MAPPER =
+			newBaseBuilder()
+					.activateDefaultTyping(
+							BasicPolymorphicTypeValidator.builder()
+									// 这相当宽松，只建议用于你自己可控的历史数据兼容
+									.allowIfBaseType(Object.class)
+									.build(),
+							DefaultTyping.NON_FINAL,
+							JsonTypeInfo.As.WRAPPER_ARRAY
+					)
+					.build();
 	/**
 	 * 对象转json
 	 * @param object 对象
@@ -43,7 +69,7 @@ public class Json {
 		try {
 			return OBJECT_MAPPER.writeValueAsString(object);
 		}
-		catch (JsonProcessingException e) {
+		catch (JacksonException e) {
 			logger.error("toJsonString() error: {}", e.getMessage());
 		}
 		return "";
@@ -148,4 +174,7 @@ public class Json {
 		return jsonNode;
 	}
 
+	public static ObjectMapper getRedisObjectMapper() {
+		return REDIS_OBJECT_MAPPER;
+	}
 }

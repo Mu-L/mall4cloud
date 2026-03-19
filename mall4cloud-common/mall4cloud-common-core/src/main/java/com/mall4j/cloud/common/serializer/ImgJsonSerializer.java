@@ -1,13 +1,13 @@
 package com.mall4j.cloud.common.serializer;
 
 import cn.hutool.core.util.StrUtil;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
+import tools.jackson.core.JsonGenerator;
 import com.mall4j.cloud.common.util.PrincipalUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
 
 import java.io.IOException;
 
@@ -17,13 +17,13 @@ import java.io.IOException;
  */
 @Component
 @RefreshScope
-public class ImgJsonSerializer extends JsonSerializer<String> {
+public class ImgJsonSerializer extends ValueSerializer<String> {
 
 	@Value("${biz.oss.resources-url}")
 	private String imgDomain;
 
 	@Override
-	public void serialize(String value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+	public void serialize(String value, JsonGenerator gen, SerializationContext serializers) {
 		if (StrUtil.isBlank(value)) {
 			gen.writeString(StrUtil.EMPTY);
 			return;

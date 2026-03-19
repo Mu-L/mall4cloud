@@ -1,5 +1,6 @@
 package com.mall4j.cloud.product.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import com.mall4j.cloud.common.model.BaseModel;
  * @date 2020-10-28 15:27:23
  */
 public class Attr extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
 

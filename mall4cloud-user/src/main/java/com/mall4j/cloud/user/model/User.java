@@ -1,8 +1,10 @@
 package com.mall4j.cloud.user.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import com.mall4j.cloud.common.model.BaseModel;
+
 /**
  * 用户表
  *
@@ -10,6 +12,7 @@ import com.mall4j.cloud.common.model.BaseModel;
  * @date 2020-12-08 11:18:04
  */
 public class User extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
 	public static final String DISTRIBUTED_ID_KEY = "mall4cloud-user";

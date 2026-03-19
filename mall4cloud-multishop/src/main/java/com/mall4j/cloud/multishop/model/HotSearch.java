@@ -1,8 +1,10 @@
 package com.mall4j.cloud.multishop.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import com.mall4j.cloud.common.model.BaseModel;
+
 /**
  * 热搜
  *
@@ -10,6 +12,7 @@ import com.mall4j.cloud.common.model.BaseModel;
  * @date 2021-01-27 09:10:00
  */
 public class HotSearch extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**

@@ -91,8 +91,8 @@ public class GeneratedKeyInterceptor implements Interceptor {
             // 获取批量查询的参数并生成主键
             if (parameter instanceof HashMap){
                 Object list = ((Map)parameter).get("list");
-                if (list instanceof ArrayList) {
-                    for (Object o : (ArrayList) list) {
+                if (list instanceof ArrayList arrayList) {
+                    for (Object o : arrayList) {
                         generatedKey(dbObject);
                     }
                 }
@@ -103,12 +103,12 @@ public class GeneratedKeyInterceptor implements Interceptor {
     }
 
     protected BaseModel findDbObject(Object parameterObj) {
-        if (parameterObj instanceof BaseModel) {
-            return  (BaseModel)parameterObj;
-        } else if (parameterObj instanceof Map) {
-            for (Object val : ((Map<?, ?>) parameterObj).values()) {
-                if (val instanceof BaseModel) {
-                    return  (BaseModel)val;
+        if (parameterObj instanceof BaseModel model1) {
+            return  model1;
+        } else if (parameterObj instanceof Map<?, ?> map) {
+            for (Object val : map.values()) {
+                if (val instanceof BaseModel model) {
+                    return  model;
                 }
             }
         }

@@ -1,8 +1,10 @@
 package com.mall4j.cloud.order.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import com.mall4j.cloud.common.model.BaseModel;
+
 /**
  * 订单项
  *
@@ -10,6 +12,7 @@ import com.mall4j.cloud.common.model.BaseModel;
  * @date 2020-12-04 11:27:35
  */
 public class OrderItem extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**

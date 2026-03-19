@@ -2,6 +2,7 @@ package com.mall4j.cloud.user.model;
 
 import com.mall4j.cloud.common.model.BaseModel;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -11,6 +12,7 @@ import java.io.Serializable;
  * @date 2020-12-07 15:50:02
  */
 public class UserAddr extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 	public static final Integer DEFAULT_ADDR = 1;
 	public static final Integer NOT_DEFAULT_ADDR = 0;

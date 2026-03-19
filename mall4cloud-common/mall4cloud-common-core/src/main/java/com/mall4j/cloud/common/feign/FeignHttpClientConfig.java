@@ -1,11 +1,13 @@
 package com.mall4j.cloud.common.feign;
 
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author FrozenWatermelon
@@ -22,11 +24,11 @@ public class FeignHttpClientConfig {
 
         RequestConfig requestConfig = RequestConfig.custom()
                 //从连接池获取连接等待超时时间
-                .setConnectionRequestTimeout(2000)
+                .setConnectionRequestTimeout(2000, TimeUnit.MILLISECONDS)
                 //请求超时时间
-                .setConnectTimeout(2000)
+                .setConnectTimeout(2000, TimeUnit.MILLISECONDS)
                 //等待服务响应超时时间
-                .setSocketTimeout(15000)
+                .setResponseTimeout(15000, TimeUnit.MILLISECONDS)
                 .build();
         HttpClientBuilder httpClientBuilder = HttpClientBuilder.create().setConnectionManager(connectionManager)
                 .setDefaultRequestConfig(requestConfig)

@@ -1,6 +1,6 @@
 package com.mall4j.cloud.api.user.vo;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.annotation.JsonSerialize;
 import com.mall4j.cloud.common.serializer.ImgJsonSerializer;
 import com.mall4j.cloud.common.vo.BaseVO;
 import io.swagger.v3.oas.annotations.media.Schema;

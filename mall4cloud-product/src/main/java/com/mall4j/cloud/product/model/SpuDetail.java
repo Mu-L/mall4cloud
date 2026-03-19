@@ -2,6 +2,7 @@ package com.mall4j.cloud.product.model;
 
 import com.mall4j.cloud.common.model.BaseModel;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -11,7 +12,8 @@ import java.io.Serializable;
  * @date 2020-10-28 15:27:24
  */
 public class SpuDetail extends BaseModel implements Serializable{
-	private static final long serialVersionUID = 1L;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
 	/**
 	 * 商品id

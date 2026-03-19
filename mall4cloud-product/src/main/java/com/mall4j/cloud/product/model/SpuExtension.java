@@ -2,6 +2,7 @@ package com.mall4j.cloud.product.model;
 
 import com.mall4j.cloud.common.model.BaseModel;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,6 +13,7 @@ import java.util.Date;
  * @date 2020-11-11 13:49:06
  */
 public class SpuExtension extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**

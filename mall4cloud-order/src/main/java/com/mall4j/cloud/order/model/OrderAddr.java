@@ -2,6 +2,7 @@ package com.mall4j.cloud.order.model;
 
 import com.mall4j.cloud.common.model.BaseModel;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -11,6 +12,7 @@ import java.io.Serializable;
  * @date 2020-12-05 14:13:50
  */
 public class OrderAddr extends BaseModel implements Serializable{
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**

@@ -1,6 +1,5 @@
 package com.mall4j.cloud.common.cache.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Component;
@@ -14,7 +13,6 @@ public class CacheManagerUtil {
 
 	private final CacheManager cacheManager;
 
-	@Autowired
 	public CacheManagerUtil(CacheManager cacheManager) {
 		this.cacheManager = cacheManager;
 	}
