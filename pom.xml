@@ -38,8 +38,8 @@
         <spring-cloud-alibaba.version>2025.1.0.0</spring-cloud-alibaba.version>
 
         <!--分离出这两个东西，是为了能够在 spring cloud alibaba不更新的时候，及时更新-->
-        <seata.version>2.0.0</seata.version>
-        <nacos.version>2.4.3</nacos.version>
+        <seata.version>2.6.0</seata.version>
+        <nacos.version>3.1.1</nacos.version>
 
         <!-- 次要依赖 -->
         <hutool-version>5.8.29</hutool-version>
@@ -96,7 +96,7 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>io.seata</groupId>
+                <groupId>org.apache.seata</groupId>
                 <artifactId>seata-spring-boot-starter</artifactId>
                 <version>${seata.version}</version>
                 <exclusions>

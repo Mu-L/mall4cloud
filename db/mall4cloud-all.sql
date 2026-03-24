@@ -138,6 +138,19 @@ INSERT INTO `leaf_alloc` VALUES ('mall4cloud-pay', 564994845, 100, '2021-07-05 1
 INSERT INTO `leaf_alloc` VALUES ('mall4cloud-platform-user', 101600, 100, '2021-07-03 13:13:54', 'mall4cloud-platform数据库中sys_user这张表的id', 10);
 INSERT INTO `leaf_alloc` VALUES ('mall4cloud-user', 106600, 100, '2021-07-01 11:22:26', 'mall4cloud-user数据库中user这张表的id', 10);
 
+DROP TABLE IF EXISTS `undo_log`;
+CREATE TABLE `undo_log`  (
+                             `id` bigint NOT NULL AUTO_INCREMENT,
+                             `branch_id` bigint NOT NULL,
+                             `xid` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                             `context` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                             `rollback_info` longblob NOT NULL,
+                             `log_status` int NOT NULL,
+                             `log_created` datetime NOT NULL,
+                             `log_modified` datetime NOT NULL,
+                             PRIMARY KEY (`id`) USING BTREE,
+                             UNIQUE INDEX `ux_undo_log`(`xid`, `branch_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 387 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
 USE mall4cloud_multishop;
 

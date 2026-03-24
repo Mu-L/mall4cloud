@@ -30,6 +30,19 @@ CREATE TABLE `leaf_alloc` (
   PRIMARY KEY (`biz_tag`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+DROP TABLE IF EXISTS `undo_log`;
+CREATE TABLE `undo_log`  (
+                             `id` bigint NOT NULL AUTO_INCREMENT,
+                             `branch_id` bigint NOT NULL,
+                             `xid` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                             `context` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                             `rollback_info` longblob NOT NULL,
+                             `log_status` int NOT NULL,
+                             `log_created` datetime NOT NULL,
+                             `log_modified` datetime NOT NULL,
+                             PRIMARY KEY (`id`) USING BTREE,
+                             UNIQUE INDEX `ux_undo_log`(`xid`, `branch_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 387 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
 -- ----------------------------
 -- Records of leaf_alloc
 -- ----------------------------

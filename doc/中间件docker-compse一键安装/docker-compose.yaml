@@ -42,7 +42,7 @@ services:
 
 
   mall4cloud-nacos:
-    image: registry.cn-hongkong.aliyuncs.com/mall4j-images/nacos-server:v2.3.2
+    image: registry.cn-hongkong.aliyuncs.com/mall4j-images/nacos-server:v3.1.1
     container_name: mall4cloud-nacos
     restart: always
     depends_on:
@@ -70,7 +70,7 @@ services:
       - ./nacos/logs:/home/nacos/logs
 
   mall4cloud-seata:
-    image: registry.cn-hongkong.aliyuncs.com/mall4j-images/seata-server:2.0.0
+    image: registry.cn-hongkong.aliyuncs.com/mall4j-images/seata-server:2.6.0
     container_name: mall4cloud-seata
     restart: always
     network_mode: "host"
