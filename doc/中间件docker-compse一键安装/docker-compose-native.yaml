@@ -76,7 +76,6 @@ services:
     network_mode: "host"
     expose:
       - 8091
-      - 7091
     environment:
       - TZ
       - STORE_MODE=db

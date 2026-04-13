@@ -22,6 +22,8 @@ chmod -R 777 ./elasticsearch/data
 docker compose up -d --build
 ```
 
+> Seata 2.6 仅使用 `8091` 端口，`seata-server` 不再使用旧版 `7091` 管理端口；如果需要控制台能力，请按官方方式单独部署 namingserver / console，不要在 `seata/application.yml` 中继续保留旧版 `console` 配置。
+
 
 5.各个端访问路径及其密码
 

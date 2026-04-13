@@ -1,9 +1,9 @@
-server:
-  port: 7091
-
 spring:
   application:
     name: seata-server
+  main:
+    web-application-type: none
+
 
 logging:
   config: classpath:logback-spring.xml
@@ -15,11 +15,6 @@ logging:
     kafka-appender:
       bootstrap-servers: 127.0.0.1:9092
       topic: logback_to_logstash
-
-console:
-  user:
-    username: seata
-    password: seata
 
 seata:
   config:
