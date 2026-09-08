@@ -40,7 +40,7 @@ Mall4cloud 主线已升级到 Spring Boot 4、Spring Cloud 和 Vue3，适合微�
 - 开发环境搭建视频：[https://www.bilibili.com/video/BV1TK411C7aV](https://www.bilibili.com/video/BV1TK411C7aV)
 - Agent Skill：权威副本 `.agents/skills/mall4cloud/`（Cursor / Codex）；Claude Code 使用 `.claude/skills/mall4cloud/`（同一份内容）。按现有功能点辅助启动、使用和二次开发
 
-建议先阅读文档，再结合视频搭建本地开发环境。
+建议先阅读文档，再结合视频搭建本地开发环境。先起启动中间件 MySQL、Redis、Nacos、MinIO；后端最小链路是网关 `mall4cloud-gateway`（`8000`）+ `auth` + `rbac` + `biz` + 平台端 `platform` 或商家端 `multishop`。前端 `VITE_APP_BASE_API` 只配网关，不要直连业务端口。
 
 项目按阿里巴巴代码规约进行检查，以下是代码规约扫描结果：
 
@@ -93,6 +93,12 @@ Mall4j 开源版主仓库更适合了解 Java 单体商城和 B2C 单商户基�
 开源版可以按 AGPLv3 协议自行部署和评估。
 
 闭源商用、企业私有化交付、集群部署支持、长期售后和更多业务版本，可以通过 Mall4j 官网了解企业版本。
+
+### 前端应该连哪个端口？
+
+管理后台和 uni-app 都只连网关 `8000`。auth、rbac、product 等业务服务有各自端口，用于本机启动和注册 Nacos，不要配进 `VITE_APP_BASE_API`。
+
+仓库示例 IP 是 `192.168.1.46`，拿到源码后请批量替换成自己的地址。
 
 ### Mall4cloud 是否已经升级到 Spring Boot 4？
 

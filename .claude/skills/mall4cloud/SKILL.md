@@ -47,7 +47,7 @@ description: "Mall4cloud 开源版现有功能副驾驶：Nacos/网关/多服务
 
 ### 配置在 Nacos，库按服务拆
 
-业务配置主要在 Nacos：公共 `application.yml` + 各服务 `mall4cloud-xxx.yml`。本地 `bootstrap.yml` / 网关 `application.yml` 只负责连 Nacos。`NACOS_HOST`/`NACOS_PORT` 以**当前源码默认值**为准（示例 IP 会变），和 Compose 初始化 SQL 里的地址必须一致。Compose 里 Nacos 控制台常见 `8080`，客户端 `8848`。初始化账号可能是 `nacos / 80jpnH4.r5g`，源码默认常写 `nacos/nacos`，启用鉴权时两边统一。不要无脑全仓替换某个示例 IP。
+业务配置主要在 Nacos：公共 `application.yml` + 各服务 `mall4cloud-xxx.yml`。本地 `bootstrap.yml` / 网关 `application.yml` 只负责连 Nacos。仓库对外示例 IP 是 **`192.168.1.46`**，客户应批量换成自己的地址；本机 IP 不要写进要发布的源码。Compose 里 Nacos 控制台常见 `8080`，客户端 `8848`。初始化账号可能是 `nacos / 80jpnH4.r5g`，源码默认常写 `nacos/nacos`，启用鉴权时两边统一。
 
 每个业务服务对应自己的 MySQL 库（`db/mall4cloud_auth.sql` 等）。改表只动该服务的库和 `db/` 脚本；登录失败先确认 auth、rbac、platform 或 multishop 是同一套脚本，不要混版本。
 
